@@ -10,11 +10,15 @@
      Website Customization
     """,
     'depends': ['base', 'web', 'sale', 'website_sale_stock', 'website_sale', 'website_sale_comparison'],
+    'images': [
+        'static/description/banner.png',
+        ],
     'data': [
         'views/products_view.xml',
         'views/website_product_view.xml',
     ],
     'license': 'LGPL-3',
     'application': True,
-    'installable': True
+    'installable': True,
+    'website': 'https://www.ahex.co',
 }
