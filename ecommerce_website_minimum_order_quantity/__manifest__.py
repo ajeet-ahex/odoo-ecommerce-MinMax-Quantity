@@ -13,9 +13,7 @@
     'images': [
         'static/description/banner.png',
         ],
-    'Versions': [
-        '17.0',
-        ],
+        
     'data': [
         'views/products_view.xml',
         'views/website_product_view.xml',
