@@ -9,7 +9,7 @@
     'description': """
      Website Customization
     """,
-    'depends': ['base', 'web', 'sale', 'website_sale_stock', 'website_sale', 'website_sale_comparison'],
+    'depends': ['base', 'web', 'sale', 'website_sale_stock', 'website_sale', 'website_sale_comparison', 'website_sale_product_configurator'],
     'images': [
         'static/description/banner.png',
         ],
