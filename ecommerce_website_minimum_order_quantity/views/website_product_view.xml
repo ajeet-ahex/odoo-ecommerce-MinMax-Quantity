@@ -13,15 +13,15 @@
                     </tr>
                 </div>
             </table>
-
             <div id="errorToaster" class="error-toaster"></div>
             <script type="text/javascript">
                 const MIN_DELAY = 1000; // Define constants for better readability
                 const ERROR_TOAST_TIMEOUT = 5000;
-
                 function setQuantityMin(quantityElement, minQty) {
                 quantityElement.dataset.min = minQty;
+                if(quantityElement.value &lt; minQty){
                 quantityElement.value = minQty;
+                }
                 }
 
                 function showErrorToast(message) {
@@ -39,10 +39,8 @@
                 const cartButton = document.getElementById("add_to_cart");
                 const minQty = document.getElementById("qtyId").innerHTML;
                 const qtyParse = parseInt(minQty, 10);
-
                 quantityElements.forEach((quantityElement, index) => {
                 setQuantityMin(quantityElement, qtyParse);
-
                 quantityElement.addEventListener('blur', (event) => {
                 const targetValue = parseInt(event.target.value, 10);
                 if (isNaN(targetValue) || targetValue &lt; qtyParse) {
@@ -64,7 +62,6 @@
 
                 // Handle add to cart button click (similar logic for other buttons)
                 cartButton.addEventListener('click', () => {
-                <!--                console.log("cart button clicked")-->
                 setTimeout(() => {
                 const quantityElements2 = document.querySelectorAll('.quantity');
                 const minQty2 = document.getElementById("qtyId").innerHTML;
@@ -72,7 +69,6 @@
 
                 quantityElements2.forEach((quantityElement, index) => {
                 setQuantityMin(quantityElement, qtyParse2);
-
                 quantityElement.addEventListener('blur', (event) => {
                 const targetValue = parseInt(event.target.value, 10);
                 if (isNaN(targetValue) || targetValue &lt; qtyParse2) {
@@ -95,48 +91,51 @@
                 }
                 })
                 })
-
                 }, MIN_DELAY);
                 });
                 } catch (e) {
                 // handle errors gracefully
                 }
                 }, MIN_DELAY);
-
-
             </script>
             <style>
                 .error-toaster {
-                position: fixed;
+                position: absolute;
                 bottom: 20px;
-                left: 50%;
+                left: 100%;
                 transform: translateX(-50%);
-                background-color: #ff4d4d;
-                color: #fff;
                 padding: 10px 20px;
                 border-radius: 5px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 40%);
                 visibility: hidden;
                 transition: visibility 0s, opacity 0.5s ease;
+                border:2px solid #070808a3;
+                bottom:94%;
+                width:20%;
+                height:80px;
+                font-size:18px;
+                margin-left:-9.5%;
+                background-color: #ff4d4d;
+                color: #fff;
+                z-index:2000;
+                }
+                .error-text {
+                display: inline-block;
+                padding: 0 10px;
                 }
             </style>
         </xpath>
     </template>
-
-
     <template id="custom_cart_lines" name="Custom Shopping Cart Lines"
               inherit_id="website_sale.cart_lines">
         <xpath expr="//div[@class='d-flex flex-column align-items-end']" position="before">
-            <!-- Add your minimum order quantity field here -->
             <div class="form-group" style="visibility: hidden;">
                 <label for="minimum_order_qty">Minimum Order Quantity</label>
                 <div class="qtyId1">
                     <t t-esc="line.product_id.minimum_order_qty"/>
                 </div>
             </div>
-
             <div id="errorToaster" class="error-toaster"></div>
-
             <script type="text/javascript">
                 setTimeout(()=>{
                 try{
@@ -167,7 +166,6 @@
                 }
                 });
                 });
-
                 try{
                 const subButton111 = document.querySelectorAll(".js_add_cart_json");
                 subButton111.forEach((cart_button, index) => {
@@ -196,23 +194,30 @@
 
                 },100)
             </script>
-            <style>
+                        <style>
                 .error-toaster {
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                background-color: #ff4d4d;
-                color: #fff;
+                position: absolute;
+                top: 20px; /* Position near the top */
+                right: 20px; /* Align to the right */
+                transform: translateX(0); /* Remove the horizontal centering */
                 padding: 10px 20px;
                 border-radius: 5px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
                 visibility: hidden;
                 transition: visibility 0s, opacity 0.5s ease;
+                border: 2px solid #070808a3;
+                width: 20%;
+                height: 80px;
+                font-size: 18px;
+                background-color: #ff4d4d;
+                color: #fff;
+                z-index: 2000;
+                }
+                .error-text {
+                display: inline-block;
+                padding: 0 10px;
                 }
             </style>
         </xpath>
     </template>
-
-
 </odoo>
