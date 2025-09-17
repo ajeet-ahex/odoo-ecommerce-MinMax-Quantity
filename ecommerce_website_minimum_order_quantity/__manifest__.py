@@ -3,7 +3,7 @@
     'version': '17.0.0.1',
     'category': 'eCommerce',
     'author': 'Ahex Technologies',
-    'summary': 'E-Commerce Minimum Order Quantity',
+    'summary': 'Easily define minimum quantities for products in your e-commerce store',
     'website': '',
     'sequence': '10',
     'description': """
